@@ -1,8 +1,10 @@
-from django.shortcuts import render,get_object_or_404,HttpResponse
+from django.shortcuts import render,get_object_or_404,HttpResponse,redirect
 from .models import Article
-from .forms import LoginForm,UserRegistration
+from .forms import LoginForm,UserRegistration,ArticleRegistrationForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+
+
 
 
 from django.contrib.auth import authenticate,login
@@ -82,6 +84,26 @@ def logout_view(request):
     # Redirect to a success page.
     return render(request,'registration/logged_out.html')  
     
+
+def add_article(request):
+    if request.method == "POST":
+        article_form = ArticleRegistrationForm(request.POST)
+        # Handle form submission
+        if article_form.is_valid():
+            article = article_form.save(commit = False)
+            article.author = request.user
+            article.save()
+            return redirect('article-list')
+    else:
+        article_form = ArticleRegistrationForm()
+    
+    
+    
+    context = {
+        'article_form': article_form
+    }
+    
+    return render(request, "articles/article_forms.html", context)
 
 
 
