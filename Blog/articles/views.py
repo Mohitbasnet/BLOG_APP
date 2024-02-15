@@ -1,6 +1,9 @@
 from django.shortcuts import render,get_object_or_404,HttpResponse
 from .models import Article
 from .forms import LoginForm,UserRegistration
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
 
 from django.contrib.auth import authenticate,login
 # Create your views here.
@@ -74,7 +77,12 @@ def user_register(request):
     }
     return render(request,'articles/register.html',context)
 
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
+    return render(request,'registration/logged_out.html')  
     
+
 
 
 
