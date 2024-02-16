@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,HttpResponse,redirect
 from .models import Article
-from .forms import LoginForm,UserRegistration,ArticleRegistrationForm
+from .forms import LoginForm,UserRegistration,ArticleRegistrationForm,ArticleUpdateForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
@@ -108,3 +108,12 @@ def add_article(request):
 
 
 
+def update_article(request,slug):
+    article = Article.objects.get(slug = slug)
+    form =  ArticleUpdateForm(request.POST or None ,instance =article)
+    if form.is_valid():
+        form.save()
+        return redirect('article-list')
+    return render(request,"articles/update.html",{
+        'form': form
+    })
