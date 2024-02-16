@@ -30,4 +30,7 @@ class ArticleRegistrationForm(forms.ModelForm):
          fields = ('title', 'description')
 
 
-
+class ArticleUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ('title','description')
