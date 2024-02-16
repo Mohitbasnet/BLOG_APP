@@ -18,8 +18,10 @@ Article Details
      {% if request.user == article.author%}
 
      <p> {{article.description}}</p>
-     <a class  = "btn btn-danger mx-3 mt-3" href ""> Delete</a>
+     
      <a class  = "btn btn-success mx-3 mt-3" href = "{% url 'update-article' article.slug %}"> Update</a>
+     <a class  = "btn btn-danger mx-3 mt-3" href = "{% url 'delete-article' article.slug%}"> Delete</a>
+
      {% endif %}
 </div>
 {% endblock %}

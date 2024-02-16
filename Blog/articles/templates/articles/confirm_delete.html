@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Confirm Delete
+{% endblock %}
+
+{% block style%}
+
+<style>
+    .confirm_delete_style{
+        width: 500px;
+        margin: auto;
+    }
+</style>
+
+{% endblock %}
+{% block body %}
+<div class = "container mt-4 confirm_delete_style">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete "{{ article.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class  = "btn btn-danger mx-3 mt-3"type="submit" name="confirm_delete" value="True">Yes, delete</button>
+        <a  class  = "btn btn-success mt-3" href="{% url 'article-detail' article.slug %}">Cancel</a>
+    </form>
+<div>
+{% endblock %}
