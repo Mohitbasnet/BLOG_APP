@@ -6,7 +6,7 @@
             {% endif %}
         </li>
         <li class="page-item">
-            <a class="page-link">Page {{ page.page_number }} of {{ page.paginator.num_pages }}</a>
+            <a class="page-link">Page {{ page.number }} of {{ page.paginator.num_pages }}</a>
         </li>
         <li class="page-item">
             {% if page.has_next %}
