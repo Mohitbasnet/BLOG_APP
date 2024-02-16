@@ -4,7 +4,7 @@ from .forms import LoginForm,UserRegistration,ArticleRegistrationForm,ArticleUpd
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib import messages
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 from django.contrib.auth import authenticate,login
@@ -15,11 +15,21 @@ from django.contrib.auth import authenticate,login
 def article_list(request):
     article_list = Article.objects.all().order_by('-published')
 
+    paginator = Paginator(article_list, 3)
+    page= request.GET.get('page')
+    
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
 
     
     context = {
-        'article_list': article_list
-    }
+        'article_list': articles,
+        'page': page,}
     return render(request,"article.html",context)
 
 def article_detail(request,slug):
