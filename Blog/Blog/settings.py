@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -117,16 +118,17 @@ AUTHENTICATION_BACKENDS = (
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+load_dotenv()
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 
-#facebook
-SOCIAL_AUTH_FACBOOK_KEY = '922496922861336'
-SOCIAL_AUTH_FACEBOOK_SECRET = '4b3e15fe89f8aa79f9f51c79914a4a17'
-# GITHUB
-SOCIAL_AUTH_GITHUB_KEY = '8685fca1e60ad432336c'
-SOCIAL_AUTH_GITHUB_SECRET = '9885e71eea4a47a9dcda3f496d7b8e186b2d8f38'
-# LINKEDIN
-SOCIAL_AUTH_LINKEDIN_KEY = '218143428'
-SOCIAL_AUTH_LINKEDIN_SECRET = 'rvdrdnlEyYziMdv4'
+# GitHub
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
+
+# LinkedIn
+SOCIAL_AUTH_LINKEDIN_KEY = os.environ.get('SOCIAL_AUTH_LINKEDIN_KEY')
+SOCIAL_AUTH_LINKEDIN_SECRET = os.environ.get('SOCIAL_AUTH_LINKEDIN_SECRET')
 
 LANGUAGE_CODE = 'en-us'
 
