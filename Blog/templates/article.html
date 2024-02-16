@@ -27,5 +27,7 @@
    <h1 ><a  class = 'link-style 'href="{% url 'article-detail' article.slug %}">{{article.title}}</a></h1>
 
   {% endfor %}
+  {% include 'articles/pagination.html' with page=article_list %}
+
 </div>
 {% endblock%}
