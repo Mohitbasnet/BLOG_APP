@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,8 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wqzk-24_-p(zkaj_6tx0tf&(12j-cb8)d$rbsweq^#7q*p^j_a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG =True
 ALLOWED_HOSTS = []
 
 
@@ -40,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'social_django',
 
 ]
 
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -104,9 +105,28 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+
+  
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+#facebook
+SOCIAL_AUTH_FACBOOK_KEY = '922496922861336'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4b3e15fe89f8aa79f9f51c79914a4a17'
+# GITHUB
+SOCIAL_AUTH_GITHUB_KEY = '8685fca1e60ad432336c'
+SOCIAL_AUTH_GITHUB_SECRET = '9885e71eea4a47a9dcda3f496d7b8e186b2d8f38'
+# LINKEDIN
+SOCIAL_AUTH_LINKEDIN_KEY = '218143428'
+SOCIAL_AUTH_LINKEDIN_SECRET = 'rvdrdnlEyYziMdv4'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -121,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
