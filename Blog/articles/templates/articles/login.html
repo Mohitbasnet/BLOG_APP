@@ -1,21 +1,50 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-
-
-{% block title %} Login {% endblock%}
-
+{% block title %}Login{% endblock %}
+{% block style %}
+<style>
+    .login_style {
+        width: 500px;
+        margin: auto;
+    }
+    .link_style_hover {
+        text-decoration: none;
+        color: gray; 
+    }
+    /* Additional CSS for aligning buttons in one line */
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .button-container .btn {
+        flex: 1;
+        color: white; /* Set text color to white */
+    }
+</style>
+{% endblock %}
 
 {% block body %}
-
-   <div class=" container">
-
+<div class="container mt-4 login_style">
     <h1>Login User</h1>
-    <p>User the following form for the login</p>
-    <form action="" method = "post">
-         
-        {{form.as_p}}
+    <form action="" method="post">
+        {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value = "Login" class = "btn btn-success">
+        <input type="submit" value="Login" class="btn btn-success">
     </form>
-   </div>
+</div>
+
+<div class="container mt-4 login_style">
+    <div class="button-container">
+        <button class="btn btn-primary">
+            <a href="{% url 'social:begin' 'facebook' %}" class="link_style_hover" style="color: white;">Sign in with Facebook</a>
+        </button>
+        <button class="btn btn-danger">
+            <a href="{% url 'social:begin' 'github' %}" class="link_style_hover" style="color: white;">Sign in with GitHub</a>
+        </button>
+        <button class="btn btn-warning">
+            <a href="{% url 'social:begin' 'linkedin-oauth2' %}" class="link_style_hover" style="color: white;">Sign in with LinkedIn</a>
+        </button>
+    </div>
+</div>
 {% endblock %}
