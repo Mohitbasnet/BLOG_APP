@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import authenticate,login
 # Create your views here.
@@ -94,7 +94,7 @@ def logout_view(request):
     # Redirect to a success page.
     return render(request,'registration/logged_out.html')  
     
-
+@login_required
 def add_article(request):
     if request.method == "POST":
         article_form = ArticleRegistrationForm(request.POST)
