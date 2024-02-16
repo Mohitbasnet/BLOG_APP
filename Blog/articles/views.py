@@ -3,7 +3,7 @@ from .models import Article
 from .forms import LoginForm,UserRegistration,ArticleRegistrationForm,ArticleUpdateForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-
+from django.contrib import messages
 
 
 
@@ -117,3 +117,21 @@ def update_article(request,slug):
     return render(request,"articles/update.html",{
         'form': form
     })
+
+def delete_article(request, slug):
+    article = Article.objects.get(slug=slug)
+
+    if request.method == 'POST':
+        # If the user confirms the deletion
+        if request.POST.get('confirm_delete'):
+            article.delete()
+            messages.success(request, 'Article deleted successfully.')
+            return redirect('article-list')
+        else:
+            # If the user cancels the deletion
+            messages.info(request, 'Deletion canceled.')
+            return redirect('article_detail', slug=slug)
+    else:
+        # Render the confirmation template
+        return render(request, 'articles/confirm_delete.html', {'article': article})
+
