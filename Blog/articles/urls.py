@@ -12,8 +12,8 @@ urlpatterns = [
     path('delete/<slug:slug>/', views.delete_article, name='delete-article'),
 
     path('add-article/',views.add_article,name= 'add-article'),
-    path('login/',views.user_login, name = 'login'),
-    # path('login/',LoginView.as_view(), name = 'login'),
+    # path('login/',views.user_login, name = 'login'),
+    path('login/',LoginView.as_view(), name = 'login'),
     path('logout/', views.logout_view, name='logout'),
     path('password-change/', PasswordChangeView.as_view(), name='password_change'),
     path('password-change/done/',PasswordChangeDoneView.as_view(),name = 'password_change_done'),
