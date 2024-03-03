@@ -1,7 +1,7 @@
 
 # BLOG APP
 
-This Django project aims to create a web application for adding article. It utilizes Django's built-in functionalities along with custom views, models, and templates to provide a seamless user experience.
+This Django project aims to create a web application for adding articles. Also, I have integrated a chatbot here.
 
 ## Installation
 
@@ -17,7 +17,7 @@ This Django project aims to create a web application for adding article. It util
 
 3. Navigate to the project directory:
 
-    - cd feedback_project
+    - cd BLOG_API
 
 4. Install project dependencies:
 
