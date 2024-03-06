@@ -17,7 +17,7 @@ This Django project aims to create a web application for adding articles. Also, 
 
 3. Navigate to the project directory:
 
-    - cd BLOG_API
+    - cd BLOG_APP
 
 4. Install project dependencies:
 
