@@ -36,22 +36,27 @@ This Django project aims to create a web application for adding articles. Also, 
 - Submit article and see others aticles
 - Pagination
 - Authentication and Authorization
-- Django Social authentication
+- Change password
 - ChatBot integration
 
 
 ## Tech Stack
 
 - Django
+- Python
 - SQLite
 - Html
 - CSS
+
 
 ## Project Overview
 
 - Basic Django code
 - Database Design and Models
 - Management of Static Files
+## Project Video Link
+https://drive.google.com/file/d/1mZgsh1jqWgikCgBQ6zOgtl1vbD1JSkI0/view?usp=sharing
+
 
 ## Contributing
 
